@@ -5,6 +5,7 @@ import { useDebounce } from "../../hooks/use-debounce";
 import { Movie } from "../../types/movies";
 import SearchInput from "../../components/search-input/search-input";
 import "./search-page.scss"
+import { Link } from "react-router-dom";
 
 const API_URL = "https://www.omdbapi.com/";
 
@@ -49,14 +50,14 @@ export default function SearchPage() {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="movie-grid">
         {movies.map((movie) => (
-          <div key={movie.imdbID} className="movie-card">
+          <Link to={`/movie/${movie.imdbID}`} key={movie.imdbID} className="movie-card">
             <img
               src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.jpg"}
               alt={movie.Title}
             />
             <h3>{movie.Title}</h3>
             <p>{movie.Year}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
