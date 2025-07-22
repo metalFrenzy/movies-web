@@ -6,13 +6,13 @@ import { Movie } from "../../types/movies";
 import SearchInput from "../../components/search-input/search-input";
 import "./search-page.scss"
 import { Link } from "react-router-dom";
+import { useSearch } from "../../context/search-page.context";
 
 const API_URL = "https://www.omdbapi.com/";
 
 export default function SearchPage() {
-  const [query, setQuery] = useState("");
+  const { query, setQuery, movies, setMovies } = useSearch();
   const debouncedQuery = useDebounce(query, 500);
-  const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function SearchPage() {
     };
 
     fetchMovies();
-  }, [debouncedQuery]);
+  }, [debouncedQuery, setMovies]);
 
   return (
     <div className="search-page">
