@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDebounce } from "../hooks/use-debounce";
-import { Movie } from "../types/movies";
+import { useDebounce } from "../../hooks/use-debounce";
+import { Movie } from "../../types/movies";
+import SearchInput from "../../components/search-input/search-input";
+import "./search-page.scss"
 
 const API_URL = "https://www.omdbapi.com/";
 
@@ -42,16 +44,9 @@ export default function SearchPage() {
 
   return (
     <div className="search-page">
-      <h1>🎬 Movie Search</h1>
-      <input
-        type="text"
-        placeholder="Search for a movie..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-
+      <h1>🎬 Frenzy Movies </h1>
+      <SearchInput value={query} onChange={(e) => setQuery(e.target.value)} />
       {error && <p style={{ color: "red" }}>{error}</p>}
-
       <div className="movie-grid">
         {movies.map((movie) => (
           <div key={movie.imdbID} className="movie-card">

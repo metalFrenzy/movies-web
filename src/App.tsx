@@ -1,5 +1,5 @@
 
-import SearchPage from './pages/search-page'
+import SearchPage from './pages/search-page/search-page'
 
 function App() {
 
