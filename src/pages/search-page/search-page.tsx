@@ -2,7 +2,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDebounce } from "../../hooks/use-debounce";
-import { Movie } from "../../types/movies";
 import SearchInput from "../../components/search-input/search-input";
 import "./search-page.scss"
 import { Link } from "react-router-dom";
